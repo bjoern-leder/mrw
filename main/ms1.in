@@ -1,0 +1,78 @@
+
+[Run name]
+name         Snoopy137
+
+[Directories]
+log_dir      ../data/ms1/log
+dat_dir      ../data/ms1/dat
+loc_dir      /ndata/qcd1/cnfg 
+cnfg_dir     /data/qcd1/cnfg  
+
+[Configurations]
+first        1 
+last         4 
+step         1 
+nrw          2
+
+[Random number generator]
+level        0      
+seed         73099  
+
+[Lattice parameters]
+kappa_u      0.1300 
+kappa_s      0.1290
+kappa_c      0.0
+csw          1.234  
+cF           0.95   
+                    
+[Reweighting factor 0]
+rwfact       RWTM2   
+im0          0       
+mu           0.003   
+isp          0       
+nsrc         24      
+
+[Reweighting factor 1]
+rwfact       RWRAT   
+im0          1       
+irp          0       
+np           6 4     
+isp          1 0     
+nsrc         1      
+
+[Rational 0]
+degree       10
+range        0.02 6.05
+
+[Solver 0]
+solver       DFL_SAP_GCR 
+nkv          16          
+isolv        1           
+nmr          4           
+ncy          5           
+nmx          48          
+res          1.0e-11     
+
+[Solver 1]
+solver       MSCG     
+nmx          256      
+res          1.0e-10  
+
+[SAP]
+bs           4 4 4 4
+
+[Deflation subspace]
+bs           4 4 4 4
+Ns           28
+
+[Deflation subspace generation]
+kappa        0.13635
+mu           0.01
+ninv         9
+nmr          4
+ncy          4
+
+[Deflation projection]
+nkv          24
+nmx          512
+res          1.0e-2

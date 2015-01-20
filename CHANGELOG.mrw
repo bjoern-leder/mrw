@@ -1,0 +1,22 @@
+c507b93 Small corrections: output to log (mrw_parms), input file.
+0910022 Corrects check11 (EO versions).
+1a7e557 Add Changelog.
+16fc2cc Updates documentation.
+1fcc59d Adds even-odd versions of TMRW[1,2,3,4] and parameter tmeo for MRW*.
+8ede2b5 Adds mrweo.c, support for eo twisted-mass rew., adds and reoders check routines.
+81a9144 Adds check6.in and TMRW2 to ms5.c, corrects significance loss in interpolation.
+fb08f57 Adds interpolations with check6.c, TMRW2, updates check5.
+14267f4 Makes check1 more robust (better bound for diff, lower res. for tmcg).
+315b90f Corrects status output to log.
+98e4fc1 Changes in parameters: removes im0, im1 and adds kappa0, kappa, kappa2.
+f6d3d24 Updates documentation.
+5cab741 Adds mrw3 and TMRW4, adds get_psi to compute inverses.
+9a664d7 Adds new test scenarios.
+26d795c Corrects unrecogniyed mrwfact TMRW1 and missing newline.
+4dc4616 Updates documentaiton.
+7a915f0 Adds documentation.
+ebb83c8 Release canidate, rc1.
+5608fcc Merges mass and twisted-mass reweighting in two routines.
+88737e1 First somewhat working version.
+73a2c92 Generated pure gauge cnfgs.
+8390702 Initial commit.

@@ -1,0 +1,13 @@
+
+
+Domain-decomposed deflation preconditioner
+
+
+check1        Check of the DFL_BLOCKS grid geometry arrays
+
+check2        Check of the programs in the module dfl_subspace.c
+
+check3        Check of the solver for the little Dirac equation
+
+check4        Check and performance of the deflated SAP+GCR solver
+

@@ -1,0 +1,16 @@
+
+
+Little Dirac operator
+
+
+check1        Check of the programs in the module Aw_gen.s
+
+check2        Check of the program  b2b_flds()
+
+check3        Direct check of Aw_dble() and Aw()
+
+check4        Consistency checks on Aw_dble(),..,Awhat()
+
+check5        Check of the program set_ltl_modes()
+
+time1         Timing of Awhat()

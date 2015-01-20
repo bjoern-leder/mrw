@@ -1,0 +1,16 @@
+
+HMC algorithm
+
+check1        Check of the program set_mdsteps()
+
+check2        Reversibility of the MD evolution
+
+check3        Conservation of the Hamilton function by the MD evolution
+
+check4        Check of add_chrono() and get_chrono()
+
+check5        Comparison of rwtm*() with action1()
+
+check6        Spectral range of the hermitian Dirac operator
+
+check7        Comparison of rwtm*eo() with action4()

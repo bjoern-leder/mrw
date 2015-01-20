@@ -1,0 +1,94 @@
+
+################################################################################
+#
+# 2+1 flavour QCD "at the physical point" with twisted-mass reweighting of the
+# second kind and even-odd preconditioning
+#
+################################################################################
+
+[Run name]
+name         64x32v2
+
+[Directories]
+log_dir      /data/openQCD/ms1/log
+dat_dir      /data/openQCD/ms1/dat
+loc_dir      /ndata/openQCD/cnfg
+cnfg_dir     /data/openQCD/cnfg
+
+[Configurations]
+first        35
+last         52
+step         1 
+nrw          2
+
+[Random number generator]
+level        0      
+seed         193392
+
+[Lattice parameters]
+kappa_u      0.137796
+kappa_s      0.136634
+kappa_c      0.0
+csw          1.715000
+cF           1.0
+                    
+[Reweighting factor 0]
+rwfact       RWTM2_EO   
+im0          0       
+mu           0.0012   
+isp          0       
+nsrc         48   
+
+[Reweighting factor 1]
+rwfact       RWRAT
+im0          1
+irp          0
+np           6 3
+isp          1 2
+nsrc         1
+
+[Rational 0]
+degree       9
+range        0.030 6.10
+
+[Solver 0]
+solver       DFL_SAP_GCR 
+nkv          32          
+isolv        1           
+nmr          4           
+ncy          5           
+nmx          512          
+res          1.0e-10     
+
+[Solver 1]
+solver       MSCG
+nmx          2048
+res          1.0e-11
+
+[Solver 2]
+solver       DFL_SAP_GCR
+nkv          32
+isolv        1
+nmr          4
+ncy          5
+nmx          512
+res          1.0e-11
+
+[SAP]
+bs           4 4 4 4
+
+[Deflation subspace]
+bs           4 4 4 4
+Ns           28
+
+[Deflation subspace generation]
+kappa        0.137740
+mu           0.001
+ninv         10
+nmr          4
+ncy          4
+
+[Deflation projection]
+nkv          24
+nmx          512
+res          1.0e-2

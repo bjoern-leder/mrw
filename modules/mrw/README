@@ -1,0 +1,154 @@
+
+********************************************************************************
+
+                     Mass and twisted-mass reweighting
+
+********************************************************************************
+
+
+Files
+-----
+
+mrw_parms.c   Reweighting factor parameter data base
+
+mrw.c         Mass and twisted-mass reweighting factors
+
+mrweo.c       Twisted-mass even-odd reweighting factors
+
+
+Include file
+------------
+
+The file mrw.h defines the prototypes for all externally accessible
+functions that are defined in the *.c files listed above.
+
+
+List of functions
+-----------------
+
+ void init_mrw(void)
+   Initialize the structure array containing the reweighting factor
+   parameter sets. This resets all previously added parameter sets.
+
+ mrw_parms_t set_mrw_parms(int irw,mrwfact_t mrwfact,double kappa0,double kappa,
+                           double mu0,double mu,double gamma,double kappa2,
+                           int isp1,int isp2,int nm,int pwr,int nsrc,int tmeo)
+  Sets the parameters in the reweighting factor parameter set number
+  irw and returns a structure containing them (see the notes).
+
+mrw_parms_t mrw_parms(int irw)
+  Returns a structure containing the reweighting factor parameter set
+  number irw (see the notes).
+
+void read_mrw_parms(int irw)
+  On process 0, this program scans stdin for a line starting with the
+  string "[Reweighting factor <int>]" (after any number of blanks), where
+  <int> is the integer value passed by the argument. An error occurs if
+  no such line or more than one is found.
+
+void print_mrw_parms(void)
+  Prints the defined reweighting factor parameter sets to stdout on
+  MPI process 0.
+
+void write_mrw_parms(FILE *fdat)
+  Writes the defined reweighting factor parameter sets to the file fdat 
+  on MPI process 0.
+
+void check_mrw_parms(FILE *fdat)
+  Compares the defined reweighting factor parameter sets with those 
+  on the file fdat on MPI process 0, assuming the latter were written
+  to the file by the program write_mrw_parms().
+
+mrw_masses_t get_mrw_masses(int irw,int k)
+  Returns the masses of mass interpolations step k for the reweighting
+  factor parameter set irw 
+
+ complex_dble mrw1(mrw_masses_t ms,int tm,int isp,double *sqnp,double *sqne,
+                  int *status)
+   Generates a random pseudo-fermion field with normal distribution,
+   assigns its square norm to sqne, solves the twisted-mass Dirac equation
+   using the mass/twisted-mass parameters in ms, sets sqnp to the square norm
+   of the solution and returns -ln(w^(1)) (see the documentation).
+   The solver is specified by the parameter set number isp.
+   The argument status must be pointing to an array of at least 1,1
+   and 3 elements, respectively, in the case of the CGNE, SAP_GCR and
+   DFL_SAP_GCR solver. On exit the array elements return the status
+   values reported by the solver program.
+
+complex_dble mrw2(mrw_masses_t ms,int tm,int *isp,complex_dble *lnw1,
+                 double *sqnp,double *sqne,int *status)
+   Generates a random pseudo-fermion field with normal distribution,
+   assigns its square norm to sqne, solves the twisted-mass Dirac equation
+   twice using the mass/twisted-mass parameters in ms, sets sqnp[0,1] to the
+   square norm of the solutions, sets lnw1[0,1] to -ln(w^(1)) and returns
+   -ln(w^(2)) (see the documentation).
+   The solvers for the two solves are specified by the parameter set numbers
+   isp[0,1].
+   The argument status must be pointing to an array of at least 2,2
+   and 6 elements, respectively, in the case of the CGNE, SAP_GCR and
+   DFL_SAP_GCR solver. On exit the array elements return the status
+   values reported by the solver program for first (first
+   half of the array) and second solve (second half).
+
+double mrw3(mrw_masses_t ms,int *isp,complex_dble *lnw1,double *sqnp,
+            double *sqne,int *status)
+   Generates a random pseudo-fermion field with normal distribution,
+   assigns its square norm to sqne, solves the twisted-mass Dirac equation
+   tree times using the mass/twisted-mass parameters in ms, sets sqnp[0,1] to the
+   square norm of the first two solutions, sets lnw1[0,1] to -ln(w^(1)) and returns
+   -ln(w^(4,tm)) (see the documentation).
+   The solvers for the two solves are specified by the parameter set numbers
+   isp[0,1].
+   The argument status must be pointing to an array of at least 4,4
+   and 9 elements, respectively, in the case of the CGNE, SAP_GCR and
+   DFL_SAP_GCR solver. On exit the array elements return the status
+   values reported by the solver program for first (first
+   third of the array), second solve (second third) and third solve
+   (last third).
+   If ms.d1==-ms.d2 and ms.m1==ms.m2 the second solve is skipped and
+   sqnp[1], lnw1[1] and status[3-5] are set to zero.
+
+ complex_dble mrw1eo(mrw_masses_t ms,int tm,int isp,double *sqnp,double *sqne,
+                  int *status)
+   Generates a random pseudo-fermion field with normal distribution,
+   assigns its square norm to sqne, solves the twisted-mass Dirac equation
+   using the mass/twisted-mass parameters in ms, sets sqnp to the square norm
+   of the solution and returns -ln(w^(1)) (see the documentation).
+   The solver is specified by the parameter set number isp.
+   The argument status must be pointing to an array of at least 1,1
+   and 3 elements, respectively, in the case of the CGNE, SAP_GCR and
+   DFL_SAP_GCR solver. On exit the array elements return the status
+   values reported by the solver program.
+
+complex_dble mrw2eo(mrw_masses_t ms,int tm,int *isp,complex_dble *lnw1,
+                 double *sqnp,double *sqne,int *status)
+   Generates a random pseudo-fermion field with normal distribution,
+   assigns its square norm to sqne, solves the twisted-mass Dirac equation
+   twice using the mass/twisted-mass parameters in ms, sets sqnp[0,1] to the
+   square norm of the solutions, sets lnw1[0,1] to -ln(w^(1)) and returns
+   -ln(w^(2)) (see the documentation).
+   The solvers for the two solves are specified by the parameter set numbers
+   isp[0,1].
+   The argument status must be pointing to an array of at least 2,2
+   and 6 elements, respectively, in the case of the CGNE, SAP_GCR and
+   DFL_SAP_GCR solver. On exit the array elements return the status
+   values reported by the solver program for first (first
+   half of the array) and second solve (second half).
+
+double mrw3eo(mrw_masses_t ms,int *isp,complex_dble *lnw1,double *sqnp,
+            double *sqne,int *status)
+   Generates a random pseudo-fermion field with normal distribution,
+   assigns its square norm to sqne, solves the twisted-mass Dirac equation
+   tree times using the mass/twisted-mass parameters in ms, sets sqnp[0,1] to the
+   square norm of the first two solutions, sets lnw1[0,1] to -ln(w^(1)) and returns
+   -ln(w^(4,tm)) (see the documentation).
+   The solvers for the two solves are specified by the parameter set numbers
+   isp[0,1].
+   The argument status must be pointing to an array of at least 4,4
+   and 9 elements, respectively, in the case of the CGNE, SAP_GCR and
+   DFL_SAP_GCR solver. On exit the array elements return the status
+   values reported by the solver program for first (first
+   third of the array), second solve (second third) and third solve
+   (last third).
+   If ms.d1==-ms.d2 and ms.m1==ms.m2 the second solve is skipped and
+   sqnp[1], lnw1[1] and status[3-5] are set to zero.

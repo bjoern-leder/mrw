@@ -1,0 +1,15 @@
+
+Archiving programs
+
+check1        Writing and reading of gauge and momentum configurations
+
+check2        Exporting and importing gauge and momentum configurations
+
+check3        Importing a previously exported configuration, possibly
+              with periodic extension
+
+check4        Writing and reading spinor fields
+
+check5        Exporting and importing spinor fields
+
+check6        Importing a previously exported spinor field

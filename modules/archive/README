@@ -1,0 +1,86 @@
+
+********************************************************************************
+
+                  I/O functions for field configurations
+
+********************************************************************************
+
+
+Files
+-----
+
+archive.c        Programs to read and write gauge-field configurations
+
+marchive.c       Programs to read and write momentum-field configurations
+
+sarchive.c       Programs to read and write global double-precision spinor 
+                 fields
+
+Include file
+------------
+
+The file archive.h defines the prototypes for all externally accessible
+functions that are defined in the *.c files listed above.
+
+
+List of functions
+-----------------
+
+void write_cnfg(char *out)
+  Writes the lattice sizes, the processor grid, the rank of the
+  calling process, the state of the random number generator and the
+  local double-precision gauge field to the file "out".
+
+void read_cnfg(char *in)
+  Reads the data previously written by the program write_cnfg from
+  the file "in" and resets the random number generator and the local
+  double-precision gauge field accordingly. The program checks that
+  the configuration satisfies open boundary conditions.
+
+void export_cnfg(char *out)
+  Writes the lattice sizes and the global double-precision gauge field to
+  the file "out" from process 0 in the universal format specified below.
+
+void import_cnfg(char *in)
+  Reads the global double-precision gauge field from the file "in" from
+  process 0, assuming that the field is stored in the universal format.
+  The field is periodically extended if needed and the program imposes 
+  open boundary conditions when they are not already satisfied.
+
+void write_mfld(char *out)
+  Writes the lattice sizes, the processor grid, the rank of the
+  calling process and the local part of the field to the file "out".
+
+void read_mfld(char *in)
+  Reads the local part of the momentum field from the file "in",
+  assuming the field was previously stored on this file by the program
+  write_mfld().
+
+void export_mfld(char *out)
+  Writes the lattice sizes and the momentum field to the file "out"
+  from process 0 in the universal format specified below.
+
+void import_mfld(char *in)
+  Reads the momentum field from the file "in" and extends the field
+  periodically if needed. The file is read by process 0 only and it is
+  assumed that the field is stored on the file in the universal format.
+
+void write_sfld(char *out,spinor_dble *sd)
+  Writes the lattice sizes, the processor grid, the rank of the
+  calling process, the size of the spinor_dble structure, the square 
+  of the norm of the spinor field sd and the local part of the latter 
+  to the file "out".
+
+void read_sfld(char *in,spinor_dble *sd)
+  Reads the local part of the spinor field sd from the file "in",
+  assuming the field was previously stored on this file by the
+  program write_sfld().
+
+void export_sfld(char *out,spinor_dble *sd)
+  Writes the lattice sizes and the spinor field sd to the file "out"
+  from process 0 in the universal format specified below.
+
+void import_sfld(char *in,spinor_dble *sd)
+  Reads the spinor field sd from the file "in". The file is read by
+  process 0 only and it is assumed that the field is stored on the
+  file in the universal format.

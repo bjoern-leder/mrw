@@ -1,0 +1,104 @@
+
+********************************************************************************
+
+                Allocation and initialization of the gauge fields
+
+********************************************************************************
+
+
+Files
+-----
+
+bstap.c        Allocation and computation of the boundary staple field
+
+plaq_sum.c     Calculation of plaquette sums
+
+shift.c        Translation of the global double-precision gauge field
+
+udcom.c        Communication of the double-precision link variables at
+               the boundaries of the local lattice
+
+uflds.c        Allocation and initialization of the global gauge fields
+
+
+Include file
+------------
+
+The file uflds.h defines the prototypes for all externally accessible
+functions that are defined in the *.c files listed above.
+
+
+List of functions
+-----------------
+
+su3_dble *bstap(void)
+  Returns the base address of the boundary staple field. If it is
+  not already allocated, the field is allocated and initialized to
+  unity except at the boundaries at time 0 and NPROC0*L0-1, where
+  the field variables are set to zero.
+
+void set_bstap(void)
+  Computes the boundary staples and copies them to the neighbouring
+  MPI processes (see doc/gauge_actions.pdf).
+
+double plaq_sum_dble(int icom)
+  Returns the sum of Re(tr{U(p)}) over all unoriented plaquettes p,
+  where U(p) is the product of the double-precision link variables
+  around p. The sum runs over all plaquettes with lower-left corner
+  in the local lattice if icom!=1 and over all plaquettes in the
+  global lattice if icom=1.
+
+double plaq_wsum_dble(int icom)
+  Returns the sum of w(p)*Re(tr{U(p)}) over all unoriented plaquettes
+  p, where w(p)=0 for all time-like p at time NPROC0*L0-1, w(p)=1/2
+  for all space-like plaquettes at time 0 and NPROC0*L0-1 and w(p)=1
+  in all other cases. The sum runs over all plaquettes with lower-left
+  corner in the local lattice if icom!=1 and over all plaquettes in 
+  the global lattice if icom=1.
+
+double plaq_action_slices(double *asl)
+  Computes the sum asl[t] of the Wilson plaquette action density
+  (w/o prefactor 1/g0^2) of the double-precision gauge field at time
+  t=0,1,..,NPROC0*L0-1 (see the notes). The program returns the total 
+  action.
+
+int shift_ud(int *s)
+  Replaces the double-precision gauge field U(x,mu) by U(x-s,mu) where
+  s[4] is any given shift vector. On exit the program returns the
+  number of elementary shifts that were performed.
+
+void copy_bnd_ud(void)
+  Copies the double-precision link variables on the boundaries of the
+  local lattice from the neighbouring processes.
+
+su3 *ufld(void)
+  Returns the base address of the single-precision gauge field. If it
+  is not already allocated, the field is allocated and initialized to
+  unity except for the time-like link variables at time NPROC0*L0-1,
+  which are set to zero.
+
+su3_dble *udfld(void)
+  Returns the base address of the double-precision gauge field. If it
+  is not already allocated, the field is allocated and initialized to
+  unity except for the time-like link variables at time NPROC0*L0-1,
+  which are set to zero.
+
+void random_u(void)
+  Initializes the single-precision gauge field to uniformly distributed
+  random SU(3) matrices. Open or Schroedinger functional boundary
+  conditions are then imposed depending on what is specified in the
+  parameter data base.
+
+void random_ud(void)
+  Initializes the double-precision gauge field to uniformly distributed
+  random SU(3) matrices. Open or Schroedinger functional boundary
+  conditions are then imposed depending on what is specified in the
+  parameter data base.
+
+void renormalize_ud(void)
+  Projects the double-precision gauge field back to SU(3). Only the
+  active link variables are projected.
+
+void assign_ud2u(void)
+  Assigns the double-precision gauge field to the single-precision
+  gauge field.

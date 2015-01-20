@@ -1,0 +1,104 @@
+[Configurations]
+nrw          9
+
+[Reweighting factor 0]
+mrwfact      MRW_ISO   
+kappa0       0.13519       
+mu0          0.5
+kappa        0.13515  
+isp          1 1     
+nsrc         6      
+nm           6   
+pwr          1
+tmeo         0
+
+[Reweighting factor 1]
+mrwfact      MRW_TF  
+kappa0       0.13519       
+kappa        0.13519 
+mu0          0.5
+mu           0.5
+gamma        1.0
+kappa2       0.13515 
+isp          0 1     
+nsrc         6     
+nm           6   
+pwr          1
+tmeo         0
+
+[Reweighting factor 2]
+mrwfact      TMRW1   
+kappa0       0.13519       
+mu0          0.0
+mu           0.001   
+isp          0      
+nsrc         6   
+nm           4   
+pwr          0
+
+[Reweighting factor 3]
+mrwfact      TMRW1       
+kappa0       0.13      
+mu0          0.001
+mu           0.0   
+isp          0      
+nsrc         6     
+nm           4   
+pwr          0
+
+
+[Reweighting factor 4]
+mrwfact      TMRW2       
+kappa0       0.13519      
+mu0          0.001
+mu           0.0   
+kappa        0.135      
+isp          0 0      
+nsrc         6     
+nm           4   
+pwr          0
+
+[Reweighting factor 5]
+mrwfact      TMRW3   
+kappa0       0.13519       
+mu0          0.0
+mu           0.001   
+kappa        0.13
+isp          1 1      
+nsrc         6     
+nm           4   
+pwr          0
+
+[Reweighting factor 6]
+mrwfact      TMRW3   
+kappa0       0.13519       
+mu0          0.0
+mu           -0.001   
+kappa        0.13
+isp          1 1      
+nsrc         6     
+nm           4   
+pwr          0
+
+[Reweighting factor 7]
+mrwfact      TMRW4   
+kappa0       0.13519       
+mu0          0.00
+mu           0.001   
+kappa        0.13
+isp          1 1      
+nsrc         6     
+nm           4   
+pwr          0
+
+[Reweighting factor 8]
+mrwfact      TMRW2_EO
+kappa0       0.137043957388724
+mu0          0.001
+mu           0.000
+kappa        0.136970
+isp          0 0
+nsrc         6
+nm           4
+pwr          4
+

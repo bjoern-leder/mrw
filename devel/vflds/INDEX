@@ -1,0 +1,13 @@
+
+Basic utility programs for complex fields
+
+check1        Allocation and initialization of the global vector fields
+
+check2        Check of the programs in the module vinit.c
+
+check3        Check of the communication programs cpv_int_bnd() and 
+              cpv_ext_bnd()
+
+check4        Check of the communication programs cpvd_int_bnd() and 
+              cpvd_ext_bnd()
+

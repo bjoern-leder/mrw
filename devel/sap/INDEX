@@ -1,0 +1,14 @@
+
+
+Schwarz Alternating Procedure (SAP) and SAP_GCR solver
+
+
+check1        Check of the block solver programs
+
+check2        Direct test of the Schwarz alternating procedure
+
+check3        Check and performance of the SAP+GCR solver
+
+time1         Timing of blk_mres() and blk_eo_mres()
+
+time2         Timing of the SAP preconditioner

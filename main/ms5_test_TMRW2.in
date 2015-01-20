@@ -1,0 +1,95 @@
+
+[Run name]
+name         Snoopy137
+
+[Directories]
+log_dir      ../data/ms5/log
+dat_dir      ../data/ms5/dat
+loc_dir      /home/leder/projects/nf2+1/mrw/ym1/cnfg 
+cnfg_dir     /home/leder/projects/nf2+1/mrw/ym1/cnfg  
+
+[Configurations]
+first        10 
+last         15 
+step         1 
+nrw          3
+
+[Random number generator]
+level        0      
+seed         73099  
+
+[Lattice parameters]
+kappa_u      0.13519
+kappa_s      0.13
+kappa_c      0.0
+csw          1.234  
+cF           0.95   
+                    
+[Reweighting factor 0]
+mrwfact      TMRW1   
+kappa0       0.13519       
+mu0          0.01
+mu           0.0   
+isp          1      
+nsrc         6   
+nm           8   
+pwr          0
+
+[Reweighting factor 1]
+mrwfact      TMRW1       
+kappa0       0.1      
+mu0          0.01
+mu           0.0141421356237310  
+isp          1      
+nsrc         6     
+nm           8   
+pwr          0
+
+[Reweighting factor 2]
+mrwfact      TMRW2       
+kappa0       0.13519      
+mu0          0.01
+mu           0.0   
+kappa        0.1      
+isp          1 1     
+nsrc         6     
+nm           4   
+pwr          0
+
+
+[Solver 0]
+solver       DFL_SAP_GCR 
+nkv          16          
+isolv        1           
+nmr          4           
+ncy          5           
+nmx          48          
+res          1.0e-11 
+
+[Solver 1]
+solver       SAP_GCR 
+nkv          16          
+isolv        1           
+nmr          4           
+ncy          5           
+nmx          48          
+res          1.0e-11     
+
+[SAP]
+bs           4 4 4 4
+
+[Deflation subspace]
+bs           4 4 4 4
+Ns           20
+
+[Deflation subspace generation]
+kappa        0.13635
+mu           0.01
+ninv         9
+nmr          4
+ncy          4
+
+[Deflation projection]
+nkv          24
+nmx          512
+res          1.0e-2

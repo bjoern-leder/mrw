@@ -1,0 +1,49 @@
+
+[Run name]
+name         Snoopy137
+
+[Directories]
+log_dir      ../data/ms2/log
+loc_dir      /ndata/qcd1/cnfg 
+cnfg_dir     /data/qcd1/cnfg  
+
+[Configurations]
+first        1 
+last         4 
+step         1 
+
+[Dirac operator]
+kappa        0.1300
+csw          1.234
+cF           0.95
+
+[Power method]
+pmx          20
+
+[Solver 0]
+solver       DFL_SAP_GCR
+nkv          16
+isolv        1
+nmr          4
+ncy          5
+nmx          128
+res          1.0e-8
+
+[SAP]
+bs           8 4 4 4
+
+[Deflation subspace]
+bs           4 4 4 4
+Ns           28
+
+[Deflation subspace generation]
+kappa        0.13635
+mu           0.005
+ninv         10
+nmr          4
+ncy          4
+
+[Deflation projection]
+nkv          24
+nmx          512
+res          1.0e-2

@@ -1,0 +1,24 @@
+
+Mass and twisted-mass reweighting
+
+check1        Direct check of mrw1
+
+check2        Direct check of mrw2
+
+check3        Consitency of mrw1 and mrw2
+
+check4        Statistical consistency of mrw2
+
+check5        Equivalenz of mrw1 and rwtm1, mrw3 and rwtm2, and direct test of mrw3
+
+check6        Direct check of mrw1eo
+
+check7        Direct check of mrw2eo
+
+check8        Consitency of mrw1eo and mrw2eo
+
+check9        Statistical consistency of mrw2eo
+
+check10       Equivalenz of mrw1eo and rwtm1eo, mrw3eo and rwtm2eo
+
+check11       Check interpolations

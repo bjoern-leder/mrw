@@ -1,0 +1,11 @@
+
+Calculation of the Sheikholeslami-Wohlert term
+
+check1        Allocation, assignment and inversion of the global SW arrays
+
+check2        Check of the gauge covariance of the SW term
+
+check3        Check of the SW term for abelian background fields
+
+time1         Timing of the program sw_term()
+

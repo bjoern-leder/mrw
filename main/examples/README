@@ -1,0 +1,12 @@
+
+********************************************************************************
+
+                     Examples of input parameter files
+
+********************************************************************************
+
+The input parameter files included in this directory have been used in actual
+simulation and measurement runs. Note, however, that simulations require
+thermalization in the course of which the parameters may have to be chosen
+differently.
+

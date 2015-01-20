@@ -1,0 +1,14 @@
+
+Allocation and initialization of the global gauge fields
+
+check1        Initialization of the link variables
+
+check2        Renormalization of the link variables
+
+check3        Check of the program that translates the double-precsion 
+              gauge field
+
+check4        Check of the program for the plaquette sum of the 
+              double-precision gauge field
+
+check5        Check of the program set_bstap()

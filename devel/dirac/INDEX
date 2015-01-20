@@ -1,0 +1,29 @@
+
+
+Programs for the O(a)-improved Wilson-Dirac operator
+
+
+check1        Gauge covariance of Dw()
+
+check2        Action of Dw() on plane waves
+
+check3        Hermiticity of Dw() and comparison with Dwee(),...
+
+check4        Gauge covariance of Dw_dble()
+
+check5        Action of Dw_dble() on plane waves
+
+check6        Hermiticity of Dw_dble() and comparison with Dwee_dble(),...
+
+check7        Comparison of Dw_blk() with Dw()
+
+check8        Comparison of Dw_blk_dble() with Dw_dble()
+
+check9        Comparison of Dw_bnd() with Dw()
+
+time1         Timing of Dw() and Dwhat()
+
+time2         Timing of Dw_dble() and Dwhat_dble()
+
+time3         Timing of Dw_blk() and Dwhat_blk()
+

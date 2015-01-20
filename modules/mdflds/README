@@ -1,0 +1,59 @@
+
+********************************************************************************
+
+                     Molecular-dynamics auxiliary fields
+
+********************************************************************************
+
+
+Files
+-----
+
+mdflds.c       Allocation and initialization of the MD auxiliary fields
+
+fcom.c         Force communication programs
+
+
+Include file
+------------
+
+The file mdflds.h defines the prototypes for all externally accessible
+functions that are defined in the *.c files listed above.
+
+
+List of functions
+-----------------
+
+mdflds_t *mdflds(void)
+  Returns the pointer to a mdflds_t structure containing the force and
+  momentum field. The fields are automatically allocated if needed.
+
+void set_frc2zero(void)
+  Sets all force variables, including those on the boundary, to zero.
+
+void bnd_mom2zero(void)
+  Sets the time-like components of the momentum field at time
+  NPROC0*L0-1 to zero. In the case of Schroedinger functional
+  boundary conditions, the momentum field on the spatial links
+  at time 0 and NPROC0*L0-1 is set to zero too.
+
+void random_mom(void)
+  Sets the elements X of the momentum field to random values with
+  distribution proportional to exp(tr{X^2}). The time-like components
+  at time NPROC0*L0-1 are set to zero. In the case of Schroedinger 
+  functional boundary conditions, the momentum field on the spatial 
+  links at time 0 and NPROC0*L0-1 is set to zero too.
+
+double momentum_action(void)
+  Returns the action of the momentum field.
+
+void copy_bnd_frc(void)
+  Fetches the force variables on the boundaries of the local lattice
+  from the neighbouring processes.
+
+void add_bnd_frc(void)
+  Adds the values of the force variables on the boundaries of the  
+  local lattice to the force field on the neighbouring processes.
+
+void free_fcom_bufs(void)
+  Frees the communication buffers used in this module.

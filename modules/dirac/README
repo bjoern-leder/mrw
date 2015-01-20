@@ -1,0 +1,199 @@
+
+********************************************************************************
+
+                           Lattice Dirac Operator
+
+********************************************************************************
+
+
+Files
+-----
+
+Dw_bnd.c            Block boundary part of the Wilson-Dirac operator
+
+Dw.c                Application of the O(a)-improved Wilson-Dirac operator Dw
+                    (single-precision programs)
+
+Dw_dble.c           Application of the O(a)-improved Wilson-Dirac operator Dw
+                    (double-precision programs)
+
+
+Include file
+------------
+
+The file dirac.h defines the prototypes for all externally accessible
+functions that are defined in the *.c files listed above. 
+
+
+List of functions
+-----------------
+
+void Dw_bnd(blk_grid_t grid,int n,int k,int l)
+  Applies the boundary part of the Wilson-Dirac operator to the field
+  b.s[k] on the n'th block b of the specified block grid and assigns
+  the result to the field bb.w[l] on the boundary bb of the block. On
+  exit b.s[k] is unchanged except on the points at global time 0 and
+  NPROC0*L0-1, where it is set to zero. The fields bb.w[l] at time -1
+  and NPROC0*L0 are set to zero too.
+
+void Dw(float mu,spinor *s,spinor *r)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw+i*mu*gamma_5*1e or Dw+i*mu*gamma_5 to the field
+  s and assigns the result to the field r. On exit s is unchanged at
+  the interior points of the lattice and equal to zero at global time
+  0 and NPROC0*L0-1. The field r is set to zero at these times too.
+
+void Dwee(float mu,spinor *s,spinor *r)
+  Applies Dw_ee+i*mu*gamma_5 to the field s on the even points of the
+  lattice and assigns the result to the field r. On exit s is unchanged
+  except on the even points at global time 0 and NPROC0*L0-1, where it
+  is set to zero. The field r is set to zero there too.
+
+void Dwoo(float mu,spinor *s,spinor *r)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw_oo or Dw_oo+i*mu*gamma_5 to the field s on the
+  odd points of the lattice and assigns the result to the field r. On
+  exit s is unchanged except on the odd points at global time 0 and
+  NPROC0*L0-1, where it is set to zero. The field r is set to zero at
+  these points too.
+
+void Dwoe(spinor *s,spinor *r)
+  Applies Dw_oe to the field s and assigns the result to the field r.
+  On exit s is unchanged except on the even points at global time 0
+  and NPROC0*L0-1, where it is set to zero. The field r is set to zero
+  on the odd points at these times.
+
+void Dweo(spinor *s,spinor *r)
+  Applies Dw_eo to the field s and *subtracts* the result from the
+  field r. On exit s is unchanged except on the odd points at global 
+  time 0 and NPROC0*L0-1, where it is set to zero. The field r is set 
+  to zero on the even points at these times.
+
+void Dwhat(float mu,spinor *s,spinor *r)
+  Applies Dwhat+i*mu*gamma_5 to the field s and assigns the result to
+  the field r. On exit s is unchanged except on the even points at
+  global time 0 and NPROC0*L0-1, where it is set to zero. The field r
+  is set to zero there too.
+
+The following programs operate on the the fields in the n'th block b of
+the specified block grid:
+
+void Dw_blk(blk_grid_t grid,int n,float mu,int k,int l)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw+i*mu*gamma_5*1e or Dw+i*mu*gamma_5 to the field
+  b.sd[k] and assigns the result to the field b.sd[l]. On exit b.sd[k]
+  is unchanged except at global time 0 and NPROC0*L0-1, where it is
+  set to zero. The field b.sd[l] is set to zero there too.
+
+void Dwee_blk(blk_grid_t grid,int n,float mu,int k,int l)
+  Applies Dw_ee+i*mu*gamma_5 to the field b.s[k] on the even points and
+  assigns the result to the field b.s[l]. On exit b.s[k] is unchanged
+  except on the even points at global time 0 and NPROC0*L0-1, where it
+  is set to zero. The field b.s[l] is set to zero there too.
+
+void Dwoo_blk(blk_grid_t grid,int n,float mu,int k,int l)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw_oo or Dw_oo+i*mu*gamma_5 to the field b.sd[k] on
+  the odd points and assigns the result to the field b.sd[l]. On exit
+  b.sd[k] is unchanged except on the odd points at global time 0 and
+  NPROC0*L0-1, where it is set to zero. The field b.sd[l] is set to
+  zero there too.
+
+void Dwoe_blk(blk_grid_t grid,int n,int k,int l)
+  Applies Dw_oe to the field b.s[k] and assigns the result to the field
+  b.s[l]. On exit b.s[k] is unchanged except on the even points at global
+  time 0 and NPROC0*L0-1, where it is set to zero. The field b.[l] is set
+  to zero on the odd points at these times.
+
+void Dweo_blk(blk_grid_t grid,int n,int k,int l)
+  Applies Dw_eo to the field b.s[k] and *subtracts* the result from the
+  field b.s[l]. On exit b.s[k] is unchanged except on the odd points at
+  global time 0 and NPROC0*L0-1, where it is set to zero. The field b.s[l]
+  is set to zero on the even points at these times.
+
+void Dwhat_blk(blk_grid_t grid,int n,float mu,int k,int l)
+  Applies Dwhat+i*mu*gamma_5 to the field b.s[k] and assigns the result 
+  to the field b.s[l]. On exit b.s[k] is unchanged except on the even
+  points at global time 0 and NPROC0*L0-1, where it is set to zero. The
+  field b.s[l] is set to zero there too.
+
+void Dw_dble(double mu,spinor_dble *s,spinor_dble *r)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw+i*mu*gamma_5*1e or Dw+i*mu*gamma_5 to the field
+  s and assigns the result to the field r. On exit s is unchanged at
+  the interior points of the lattice and equal to zero at global time
+  0 and NPROC0*L0-1. The field r is set to zero at these times too.
+
+void Dwee_dble(double mu,spinor_dble *s,spinor_dble *r)
+  Applies Dw_ee+i*mu*gamma_5 to the field s on the even points of the
+  lattice and assigns the result to the field r. On exit s is unchanged
+  except on the even points at global time 0 and NPROC0*L0-1, where it
+  it is set to zero. The field r is set to zero at these points too.
+
+void Dwoo_dble(double mu,spinor_dble *s,spinor_dble *r)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw_oo or Dw_oo+i*mu*gamma_5 to the field s on the
+  odd points of the lattice and assigns the result to the field r. On
+  exit s is unchanged except on the odd points at global time 0 and
+  NPROC0*L0-1, where it is set to zero. The field r is set to zero at
+  these points too.
+
+void Dwoe_dble(spinor_dble *s,spinor_dble *r)
+  Applies Dw_oe to the field s and assigns the result to the field r.
+  On exit s is unchanged except on the even points at global time 0
+  and NPROC0*L0-1, where it is set to zero. The field r is set to zero
+  on the odd points at these times.
+
+void Dweo_dble(spinor_dble *s,spinor_dble *r)
+  Applies Dw_eo to the field s and *subtracts* the result from the
+  field r. On exit s is unchanged except on the odd points at global 
+  time 0 and NPROC0*L0-1, where it is set to zero. The field r is set 
+  to zero on the even points at these times.
+
+void Dwhat_dble(double mu,spinor_dble *s,spinor_dble *r)
+  Applies Dwhat+i*mu*gamma_5 to the field s and assigns the result to
+  the field r. On exit s is unchanged except on the even points at
+  global time 0 and NPROC0*L0-1, where it is set to zero. The field r
+  is set to zero there too.
+
+The following programs operate on the the fields in the n'th block b of
+the specified block grid:
+
+void Dw_blk_dble(blk_grid_t grid,int n,double mu,int k,int l)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw+i*mu*gamma_5*1e or Dw+i*mu*gamma_5 to the field
+  b.sd[k] and assigns the result to the field b.sd[l]. On exit b.sd[k]
+  is unchanged except at global time 0 and NPROC0*L0-1, where it is
+  set to zero. The field b.sd[l] is set to zero there too.
+
+void Dwee_blk_dble(blk_grid_t grid,int n,double mu,int k,int l)
+  Applies Dw_ee+i*mu*gamma_5 to the field b.sd[k] on the even points and
+  assigns the result to the field b.sd[l]. On exit b.sd[k] is unchanged
+  except on the even points at global time 0 and NPROC0*L0-1, where it
+  is set to zero. The field b.sd[l] is set to zero there too.
+
+void Dwoo_blk_dble(blk_grid_t grid,int n,double mu,int k,int l)
+  Depending on whether the twisted-mass flag is set or not, this
+  program applies Dw_oo or Dw_oo+i*mu*gamma_5 to the field b.sd[k] on
+  the odd points and assigns the result to the field b.sd[l]. On exit
+  b.sd[k] is unchanged except on the odd points at global time 0 and
+  NPROC0*L0-1, where it is set to zero. The field b.sd[l] is set to
+  zero there too.
+
+void Dwoe_blk_dble(blk_grid_t grid,int n,int k,int l)
+  Applies Dw_oe to the field b.sd[k] and assigns the result to the field
+  b.sd[l]. On exit b.sd[k] is unchanged except on the even points at global
+  time 0 and NPROC0*L0-1, where it is set to zero. The field b.[l] is set
+  to zero on the odd points at these times.
+
+void Dweo_blk_dble(blk_grid_t grid,int n,int k,int l)
+  Applies Dw_eo to the field b.sd[k] and *subtracts* the result from the
+  field b.sd[l]. On exit b.sd[k] is unchanged except on the odd points at
+  global time 0 and NPROC0*L0-1, where it is set to zero. The field b.sd[l]
+  is set to zero on the even points at these times.
+
+void Dwhat_blk_dble(blk_grid_t grid,int n,double mu,int k,int l)
+  Applies Dwhat+i*mu*gamma_5 to the field b.sd[k] and assigns the result 
+  to the field b.sd[l]. On exit b.sd[k] is unchanged except on the even
+  points at global time 0 and NPROC0*L0-1, where it is set to zero. The
+  field b.sd[l] is set to zero there too.

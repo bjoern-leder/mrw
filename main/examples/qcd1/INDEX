@@ -1,0 +1,23 @@
+
+********************************************************************************
+
+                   Input parameter files for the program qcd1
+
+********************************************************************************
+
+48x24v1.in             Two-flavour QCD with Wilson plaquette action and 
+                       twisted-mass reweighting of the first kind
+
+48x24v2.in             Two-flavour QCD with Wilson plaquette action and 
+                       twisted-mass reweighting of the second kind
+
+48x24v3.in             Two-flavour QCD with Wilson plaquette action, 
+                       twisted-mass reweighting of the second kind and 
+                       even-odd preconditioning
+
+64x32v1.in             2+1 flavour QCD with Iwasaki action, second kind of
+                       twisted-mass reweighting and even-odd preconditioning 
+
+64x32v2.in             2+1 flavour QCD "at the physical point" with Iwasaki 
+                       action, second kind of twisted-mass reweighting and 
+                       even-odd preconditioning 

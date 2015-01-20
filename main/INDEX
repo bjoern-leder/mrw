@@ -1,0 +1,35 @@
+
+********************************************************************************
+
+                QCD simulations with open boundary conditions
+
+********************************************************************************
+
+Simulation programs
+
+qcd1        HMC simulation program for QCD with Wilson quarks and
+            open boundary conditions
+
+qcd2        HMC simulation program for QCD with Wilson quarks and
+            Schroedinger functional boundary conditions
+
+ym1         HMC simulation program for the SU(3) gauge theory with
+            open boundary conditions
+
+
+Measurement programs
+
+ms1         Measurement of reweighting factors
+
+ms2         Computation of the spectral range of the hermitian 
+            Dirac operator
+
+ms3         Computation of Wilson flow observables
+
+ms4         Computation of quark propagators
+
+
+Directories
+
+examples    Examples of valid input parameter files
+

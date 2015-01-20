@@ -1,0 +1,10 @@
+
+Lattice geometry and open boundary conditions
+
+check1        Consistency checks on the global index arrays cpr,...,map
+
+check2        Check of openbc() and openbcd()
+
+
+Checks on the block geometry programs are included in the directory
+devel/block.
